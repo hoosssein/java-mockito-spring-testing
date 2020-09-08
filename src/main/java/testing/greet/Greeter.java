@@ -1,6 +1,8 @@
 package testing.greet;
 
 import lombok.AllArgsConstructor;
+import testing.resolver.IdResolver;
+import testing.user.User;
 import testing.writer.Writeable;
 
 import java.util.Scanner;
@@ -12,8 +14,10 @@ import java.util.Scanner;
 public class Greeter {
     Writeable out;
     Scanner s;
+    IdResolver resolver;
     public void greet() {
         String name = s.nextLine();
-        out.println("Hello, "+name);
+        User user = resolver.resolve(name);
+        out.println("Hello, "+name+". Your id is:"+ user.getId());
     }
 }
