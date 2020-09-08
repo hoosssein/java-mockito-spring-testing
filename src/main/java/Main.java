@@ -9,6 +9,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner sin = new Scanner(System.in);
-        new Greeter().greet(new Console(), sin);
+        Greeter greeter = new Greeter(new Console(), sin);
+        greeter.greet();
     }
 }

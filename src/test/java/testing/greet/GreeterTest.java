@@ -15,11 +15,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class GreeterTest {
     @Test
     void greet() {
-        Greeter greeter = new Greeter();
         WriterStub writerStub = new WriterStub();
         Scanner scannerStub = new Scanner("Ali");
+        Greeter greeter = new Greeter(writerStub,scannerStub);
 
-        greeter.greet(writerStub,scannerStub);
+        greeter.greet();
 
         assertEquals(1, writerStub.printed.size());
         assertEquals("Hello, Ali", writerStub.printed.get(0));
