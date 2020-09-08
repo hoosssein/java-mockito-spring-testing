@@ -5,6 +5,7 @@ import testing.writer.Writeable;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -16,10 +17,12 @@ class GreeterTest {
     void greet() {
         Greeter greeter = new Greeter();
         WriterStub writerStub = new WriterStub();
-        greeter.greet(writerStub);
+        Scanner scannerStub = new Scanner("Ali");
+
+        greeter.greet(writerStub,scannerStub);
 
         assertEquals(1, writerStub.printed.size());
-        assertEquals("Hello World", writerStub.printed.get(0));
+        assertEquals("Hello, Ali", writerStub.printed.get(0));
     }
 }
 
