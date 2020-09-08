@@ -19,11 +19,15 @@ class GreeterTest {
     @Test
     void greet() {
         Writeable writerMock = Mockito.mock(Writeable.class);
-        Scanner scannerStub = new Scanner(ali);
-        Greeter greeter = new Greeter(writerMock, scannerStub);
+
+        Scanner scannerMock = Mockito.mock(Scanner.class);
+        Mockito.when(scannerMock.nextLine()).thenReturn(ali);
+
+        Greeter greeter = new Greeter(writerMock, scannerMock);
 
         greeter.greet();
 
         Mockito.verify(writerMock).println(eq("Hello, "+ali));
+        Mockito.verify(scannerMock).nextLine();
     }
 }
